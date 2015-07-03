@@ -1,3 +1,7 @@
+tabela_pha_tabelaPha:
+    resource: "@tabelaPhaBundle/Resources/config/routing/tabela.yml"
+    prefix:   /tabelaPha
+
 tabela_pha_homepage:
     path:     /tabelaPha
-    defaults: { _controller: tabelaPhaBundle:Default:index }
+    defaults: { _controller: tabelaPhaBundle:Tabela:index }

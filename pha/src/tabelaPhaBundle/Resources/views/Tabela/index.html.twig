@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1 class="page-header">Tabela Pha letra A</h1>
+
+    <table class="table table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Resultado</th>
+                <th>Açoes</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.phaCode }}</td>
+                <td>{{ entity.phaName }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('tabelaPha_show', { 'id': entity.id }) }}">Visualizar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tabelaPha_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
