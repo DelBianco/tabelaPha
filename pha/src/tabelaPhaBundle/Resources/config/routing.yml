@@ -1,0 +1,3 @@
+tabela_pha_homepage:
+    path:     /tabelaPha
+    defaults: { _controller: tabelaPhaBundle:Default:index }

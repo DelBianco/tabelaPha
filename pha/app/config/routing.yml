@@ -1,0 +1,3 @@
+tabela_pha:
+    resource: "@tabelaPhaBundle/Resources/config/routing.yml"
+    prefix:   /
