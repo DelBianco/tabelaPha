@@ -1,0 +1,30 @@
+tabelaPha:
+    path:     /
+    defaults: { _controller: "tabelaPhaBundle:Tabela:index" }
+
+tabelaPha_show:
+    path:     /{id}/show
+    defaults: { _controller: "tabelaPhaBundle:Tabela:show" }
+
+tabelaPha_new:
+    path:     /new
+    defaults: { _controller: "tabelaPhaBundle:Tabela:new" }
+
+tabelaPha_create:
+    path:     /create
+    defaults: { _controller: "tabelaPhaBundle:Tabela:create" }
+    methods:  POST
+
+tabelaPha_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "tabelaPhaBundle:Tabela:edit" }
+
+tabelaPha_update:
+    path:     /{id}/update
+    defaults: { _controller: "tabelaPhaBundle:Tabela:update" }
+    methods:  [POST, PUT]
+
+tabelaPha_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "tabelaPhaBundle:Tabela:delete" }
+    methods:  [POST, DELETE]
