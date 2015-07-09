@@ -3,5 +3,5 @@ tabela_pha_tabelaPha:
     prefix:   /tabelaPha
 
 tabela_pha_homepage:
-    path:     /tabelaPha
-    defaults: { _controller: tabelaPhaBundle:Tabela:index }
+    path:     /tabelaPha/{letra}
+    defaults: { _controller: tabelaPhaBundle:Tabela:index, letra: 'A'}

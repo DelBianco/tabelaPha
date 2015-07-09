@@ -19,16 +19,17 @@ class TabelaController extends Controller
      * Lists all Tabela entities.
      *
      */
-    public function indexAction()
+    public function indexAction($letra)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('tabelaPhaBundle:Tabela')->findAll();
+        $entities = $em->getRepository('tabelaPhaBundle:Tabela')->findByLetra($letra);
 
         return $this->render('tabelaPhaBundle:Tabela:index.html.twig', array(
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Tabela entity.
      *

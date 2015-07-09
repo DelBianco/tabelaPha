@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class TabelaRepository extends EntityRepository
 {
+    public function findByLetra($letra)
+    {
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+        $queryBuilder->select('t')
+            ->from('tabelaPhaBundle\Entity\Tabela', 't')
+            ->where($queryBuilder->expr()->like('t.phaName', ':letra'))
+            ->setParameter('letra', $letra.'%');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }
