@@ -222,4 +222,14 @@ class TabelaController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Search Tabela entities.
+     *
+     */
+    public function searchAction()
+    {
+        return $this->render('tabelaPhaBundle:Tabela:search.html.twig');
+    }
+
 }
