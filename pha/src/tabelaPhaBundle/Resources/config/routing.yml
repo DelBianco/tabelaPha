@@ -6,7 +6,11 @@ tabela_pha_homepage:
     path:     /tabelaPha/{letra}
     defaults: { _controller: tabelaPhaBundle:Tabela:index, letra: 'A' }
 
-
 tabela_pha:
     path:     /Pha
     defaults: { _controller: tabelaPhaBundle:Tabela:search }
+
+tabela_pha_ajaxQuery:
+    path:     /query
+    defaults: { _controller: tabelaPhaBundle:Tabela:query }
+    methods: [POST,GET]

@@ -2,9 +2,35 @@
 
 {% block body -%}
     <h1 class="page-header">Pha</h1>
-    {% endblock %}
+    <form>
+        <input id="letter" type="text" class="form-control">
+        <span id='query' class="btn btn-block btn-success" >Buscar</span>
+    </form>
+    <ul class="list-group" id="result">
+
+    </ul>
+
+
+{% endblock %}
 {% block javascripts %}
     <script>
-
+        var String = '';
+        var UtimosResultados = $("#result").html();
+        $("#query").click(function(){
+            UtimosResultados = $("#result").html();
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "{{ path('tabela_pha_ajaxQuery')}}",
+                    data: {
+                       search: $("#letter").val()
+                    },
+                    success: function(result){
+                        res = jQuery.parseJSON(result);
+                        $("#result").html('<li class="list-group-item">' + res.letter + ' -> '+res.code+'</li>' + UtimosResultados);
+                    }
+                }
+            );
+        });
     </script>
 {% endblock %}

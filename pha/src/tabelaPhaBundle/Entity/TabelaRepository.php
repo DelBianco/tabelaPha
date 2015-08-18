@@ -24,4 +24,18 @@ class TabelaRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    public function findLikeThis($letra)
+    {
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+        $queryBuilder->select('t')
+            ->from('tabelaPhaBundle\Entity\Tabela', 't')
+            ->where($queryBuilder->expr()->like('t.phaName', ':letra'))
+            ->setParameter('letra', $letra.'%')
+            ->orderBy('t.phaName','DESC')
+            ->setMaxResults(1);
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }

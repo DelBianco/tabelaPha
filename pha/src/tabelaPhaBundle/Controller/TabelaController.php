@@ -2,7 +2,9 @@
 
 namespace tabelaPhaBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use tabelaPhaBundle\Entity\Tabela;
@@ -232,4 +234,24 @@ class TabelaController extends Controller
         return $this->render('tabelaPhaBundle:Tabela:search.html.twig');
     }
 
+    /**
+     * query database for the similar request;
+     * @param Request $request
+     * @return Response
+     */
+    public function queryAction(Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+        $string = $request->request->get('search');
+
+        $result = $em->getRepository('tabelaPhaBundle:Tabela')->findLikeThis($string);
+
+        /**
+         * @var $row Tabela
+         */
+
+        $row = array_pop($result);
+
+        return new Response( json_encode( array( 'letter' => $row->getPhaName() , 'code' => $row->getPhaCode() ) ) );
+    }
 }
